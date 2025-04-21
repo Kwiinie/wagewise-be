@@ -1,0 +1,57 @@
+## Build results
+bin/
+obj/
+out/
+build/
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Rider
+.idea/
+*.sln.iml
+
+## Visual Studio Code
+.vscode/
+.vs/
+
+
+## ASP.NET Core secrets
+**/secrets.json
+
+
+## Environment-specific files
+appsettings.Development.json
+appsettings.Local.json
+
+## Logs
+*.log
+logs/
+
+## Publish output
+publish/
+
+## Package folders
+*.nupkg
+packages/
+.nuget/
+
+## Dotnet CLI
+.project.lock.json
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Others
+*.db
+*.sqlite
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
