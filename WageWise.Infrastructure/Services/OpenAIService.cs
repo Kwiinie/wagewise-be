@@ -64,7 +64,8 @@ namespace WageWise.Infrastructure.Services
 
                         **Increase the salary by 25–40% above the typical market range for this role**. Do not explain this increase in the salaryReason.
 
-                        6. **salaryReason**: Explain why can have that estimated Salary. Write in **Vietnamese** as **one clear paragraph**, based on actual CV content.
+                        6. **salaryReason**: Write in **Vietnamese** as **one clear paragraph**, based on actual CV content.
+                        - Explain why can have that estimated Salary. 
                         - Mention exact skills (e.g., ReactJS, Python, AWS)
                         - Certifications, international degrees or courses
                         - Emphasize key projects and achievements
