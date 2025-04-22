@@ -30,6 +30,7 @@ namespace WageWise.API
             options.UseSqlServer(
             builder.Configuration.GetConnectionString("DefaultConnection")
             ));
+            builder.Services.AddApplicationInsightsTelemetry();
 
 
 
