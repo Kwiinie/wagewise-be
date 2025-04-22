@@ -72,6 +72,13 @@ namespace WageWise.Infrastructure.Services
                         - Explain salary range decision, based on {{locationFormatted}} and job category and skills and project 
                         - Do **not return generic explanations**. Use info **from the CV**.
 
+                        7.**improvementSuggestions**: Write in **Vietnamese**.List **clear and specific suggestions** to improve the CV. Focus on areas such as:
+                        - Missing job titles or unclear roles
+                        - Lack of metrics or project outcomes
+                        - Missing or outdated skills
+                        - Poor structure or formatting
+                        - Lack of certifications, English proficiency, or portfolio links
+
                         --- 
 
                         Return **only** valid JSON in this exact format:
@@ -84,6 +91,7 @@ namespace WageWise.Infrastructure.Services
                     "location": "{{locationFormatted}}",
                     "estimatedSalary": 00000000,
                     "salaryReason": "..."
+                    "improvementSuggestions": "..."
                     }
                     ```
 

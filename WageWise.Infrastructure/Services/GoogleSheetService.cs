@@ -12,6 +12,7 @@ using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Google.Apis.Drive.v3;
 
 namespace WageWise.Infrastructure.Services
 {
@@ -22,7 +23,12 @@ namespace WageWise.Infrastructure.Services
 
         public GoogleSheetService(IHostEnvironment env, IConfiguration config)
         {
-            var credential = GoogleCredential.FromFile(Path.Combine(env.ContentRootPath, "google-service-account.json"))
+            var base64Json = config["GoogleServiceAccount:Json"];
+            if (string.IsNullOrWhiteSpace(base64Json))
+                throw new Exception("Missing GoogleServiceAccount:Json in configuration.");
+
+            var json = Encoding.UTF8.GetString(Convert.FromBase64String(base64Json));
+            var credential = GoogleCredential.FromJson(json)
                 .CreateScoped(SheetsService.Scope.Spreadsheets);
 
             _sheetsService = new SheetsService(new BaseClientService.Initializer

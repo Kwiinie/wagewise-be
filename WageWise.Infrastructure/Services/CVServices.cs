@@ -76,6 +76,7 @@ namespace WageWise.Infrastructure.Services
                 SalaryReason = analysis.SalaryReason,
                 Location = analysis.Location,
                 EstimatedSalary = analysis.EstimatedSalary,
+                ImprovementSuggestions = analysis.ImprovementSuggestions,
                 UploadedAt = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time"))
             };
 

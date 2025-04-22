@@ -19,6 +19,7 @@ namespace WageWise.Domain.Entities
         public string Location { get; set; }
         public int EstimatedSalary { get; set; }
         public string SalaryReason { get; set; }
+        public string ImprovementSuggestions {  get; set; }
         public DateTime UploadedAt { get; set; }
     }
 }

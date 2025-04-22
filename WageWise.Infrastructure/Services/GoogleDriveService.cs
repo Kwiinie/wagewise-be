@@ -29,7 +29,12 @@ namespace WageWise.Infrastructure.Services
 
         public GoogleDriveService(IHostEnvironment env, IConfiguration config)
         {
-            var credential = GoogleCredential.FromFile(Path.Combine(env.ContentRootPath, "google-service-account.json"))
+            var base64Json = config["GoogleServiceAccount:Json"];
+            if (string.IsNullOrWhiteSpace(base64Json))
+                throw new Exception("Missing GoogleServiceAccount:Json in configuration.");
+
+            var json = Encoding.UTF8.GetString(Convert.FromBase64String(base64Json));
+            var credential = GoogleCredential.FromJson(json)
                 .CreateScoped(DriveService.Scope.DriveFile);
 
             _driveService = new DriveService(new BaseClientService.Initializer
