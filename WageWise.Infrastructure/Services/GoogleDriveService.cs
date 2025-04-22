@@ -118,6 +118,7 @@ namespace WageWise.Infrastructure.Services
                 };
 
                 var request = _driveService.Permissions.Create(permission, fileId);
+                request.SendNotificationEmail = false;
                 request.Fields = "id";
                 await request.ExecuteAsync();
             }
