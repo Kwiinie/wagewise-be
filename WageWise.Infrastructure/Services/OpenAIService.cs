@@ -43,8 +43,9 @@ namespace WageWise.Infrastructure.Services
 
                         ### Extract:
 
-                        1. **positionLevel**: One of:
-                        - Intern, Fresher, Junior, Middle, Senior, Lead, Manager, Director
+                        1. **positionLevel**: Determine the candidate’s level of experience or seniority.
+                        Choose the most appropriate from:
+                        - Intern, Fresher, Junior, Middle, Senior, Lead, Manager, Director, VP, C-level
 
                         2. **jobCategory**: Categorize the job title into one of (or more specific if possible):
                         - Software Engineering, Frontend Development, Backend Development, Mobile App Development, DevOps, Data Analysis, Data Engineering, Machine Learning, Artificial Intelligence, Cybersecurity, Blockchain, Network Engineering, Business Analyst, Marketing, Content Creator, Copywriter, Product Design, UI/UX Design, Human Resources, Project Management, Game Development, QA/QC, Sales, E-commerce, SEO Specialist, Cloud Engineer, etc.
@@ -54,30 +55,32 @@ namespace WageWise.Infrastructure.Services
 
                         4. **location**: Return exactly as: "{{locationFormatted}}"
 
-                        5. **estimatedSalary**: Estimate a **realistic monthly salary in VND**, considering:
+                        5. **estimatedSalary**: Estimate a realistic monthly salary in VND, considering:
                         - Proven skills
                         - Real-world experience
-                        - Standout certifications and projects
+                        - Certifications or projects
                         - Job level and job category
-                        - Demand in {locationFormatted}
+                        - Market demand in {{locationFormatted}}
 
-                         **Set the salary slightly higher than market range for this role. Set the salary higher than about 20-30%**
+                        **Increase the salary by 25–40% above the typical market range for this role**. Do not explain this increase in the salaryReason.
 
-                        6. **salaryReason**: Write in **Vietnamese** with specific logic:
-                        - Exact skills from the CV (e.g., ReactJS, Python, AWS)
-                        - Certifications, degrees, or international experience
-                        - Why the salary is generous.
-                        - Mention important projects or certifications (e.g., Coursera, Google, AWS, etc.)
-                        - Mention years of experience or relevant achievements
-                        - Explain salary range decision, based on {{locationFormatted}} and job category and skills and project 
-                        - Do **not return generic explanations**. Use info **from the CV**.
-
-                        7.**improvementSuggestions**: Write in **Vietnamese**.List **clear and specific suggestions** to improve the CV. Focus on areas such as:
-                        - Missing job titles or unclear roles
-                        - Lack of metrics or project outcomes
-                        - Missing or outdated skills
-                        - Poor structure or formatting
-                        - Lack of certifications, English proficiency, or portfolio links
+                        6. **salaryReason**: Explain why can have that estimated Salary. Write in **Vietnamese** as **one clear paragraph**, based on actual CV content.
+                        - Mention exact skills (e.g., ReactJS, Python, AWS)
+                        - Certifications, international degrees or courses
+                        - Emphasize key projects and achievements
+                        - Major projects or responsibilities
+                        - Number of years of experience or impact
+                        - Justify the salary logically based on {{locationFormatted}}, job category, and skill strength
+                        - Include soft skills or unique value if relevant
+                        - Don’t use vague language – base everything on actual CV content
+                
+                        7. **improvementSuggestions**: Write in **Vietnamese** as **one clear paragraph**. 
+                        - Point out unclear or missing job titles, lack of KPIs/results, outdated skills
+                        - Mention missing certifications (e.g., Google, AWS, Coursera)
+                        - Suggest modern skills to add (e.g., Next.js, TypeScript, Figma, Docker, ChatGPT)
+                        - Identify structural or formatting issues (lack of clear sections or inconsistent styling)
+                        - Point out if no GitHub/portfolio/LinkedIn is provided
+                        - Mention if the CV is not tailored to any specific role or lacks focus
 
                         --- 
 
