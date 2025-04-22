@@ -14,6 +14,9 @@ namespace WageWise.API
             services.AddScoped<IAIService, AIService>();
             services.AddScoped<ICVService, CVServices>();
             services.AddScoped<IStorageService, StorageService>();
+            services.AddScoped<IGoogleDriveService, GoogleDriveService>();
+            services.AddScoped<IGoogleSheetService, GoogleSheetService>();
+
 
             return services;
         }

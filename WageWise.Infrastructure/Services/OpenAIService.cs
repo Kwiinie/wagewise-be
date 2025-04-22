@@ -26,60 +26,70 @@ namespace WageWise.Infrastructure.Services
             };
         }
 
-        public async Task<CVAnalysisResult?> AnalyzeCVAsync(string textContent, string province, string district)
+        public async Task<CVAnalysisResult?> AnalyzeCVAsync(string textContent, string province, string? district)
+
         {
+
+            string locationFormatted = string.IsNullOrWhiteSpace(district)
+        ? province
+        : $"{province}, {district}";
+
             var prompt = $$"""
-                         You are a professional CV analysis assistant.
+                            You are a professional CV analysis assistant.
 
-                         Analyze the following CV text and extract **structured information** in JSON format with **detailed reasoning**.
+                            Analyze the following CV text and extract **structured information** in JSON format with **detailed reasoning**.
 
-                         ---
+                        --- 
 
                         ### Extract:
 
                         1. **positionLevel**: One of:
-                            - Intern, Fresher, Junior, Middle, Senior, Lead, Manager, Director
+                        - Intern, Fresher, Junior, Middle, Senior, Lead, Manager, Director
 
-                        2. **jobCategory**: Categorize the job title into:
-                            - Software Engineering, Artificial Intelligence, Data Analysis, Information Assurance, Network Engineering, Content Creator, UI/UX Design, Marketing, HR, Sales, etc.
+                        2. **jobCategory**: Categorize the job title into one of (or more specific if possible):
+                        - Software Engineering, Frontend Development, Backend Development, Mobile App Development, DevOps, Data Analysis, Data Engineering, Machine Learning, Artificial Intelligence, Cybersecurity, Blockchain, Network Engineering, Business Analyst, Marketing, Content Creator, Copywriter, Product Design, UI/UX Design, Human Resources, Project Management, Game Development, QA/QC, Sales, E-commerce, SEO Specialist, Cloud Engineer, etc.
 
-                        3. **field**: The major field of the CV, such as:
-                            - IT, Business, Finance, Graphic Design, Education, Media, Healthcare, etc.
+                        3. **field**: The CV's academic or industry field, such as:
+                        - Information Technology, Computer Science, Artificial Intelligence, Cybersecurity, Data Science, Multimedia, Graphic Design, Communication, Journalism, Business Administration, Marketing, Finance, Banking, Accounting, Human Resources, Education, Law, Construction, Architecture, Healthcare, Civil Engineering, Economics, etc.
 
-                        4. **location**: Extract and format as: **{{province}}, {{district}}**
+                        4. **location**: Return exactly as: "{{locationFormatted}}"
 
-                        5. **estimatedSalary**: Estimate a realistic **monthly salary in VND**. Make an informed guess using:
-                            - position level
-                            - job category + field
-                            - **location: {{province}}, {{district}}**
-                            - CV content: skills, certifications, project depth, company type
-                            - current salary benchmarks in that specific province or major nearby cities in Vietnam
+                        5. **estimatedSalary**: Estimate a **realistic monthly salary in VND**, considering:
+                        - Proven skills
+                        - Real-world experience
+                        - Standout certifications and projects
+                        - Job level and job category
+                        - Demand in {locationFormatted}
 
-                        6. **salaryReason**: Write a detailed reason using the actual CV content.
-                            - Mention specific **skills** (e.g., Python, React, SQL)
-                            - Mention relevant **projects or achievements**
-                            - Mention **certifications**, degrees, or internships
-                            - Adjust the range based on **{{province}}, {{district}}** and job level
-                            - Provide a real-world context for the salary (e.g., “Junior React developers in Hồ Chí Minh earn 15–20M”) **ANSWER IN VIETNAMESE**
+                         **Set the salary slightly higher than market range for this role. Set the salary higher than about 20-30%**
 
-                        ---
+                        6. **salaryReason**: Write in **Vietnamese** with specific logic:
+                        - Exact skills from the CV (e.g., ReactJS, Python, AWS)
+                        - Certifications, degrees, or international experience
+                        - Why the salary is generous.
+                        - Mention important projects or certifications (e.g., Coursera, Google, AWS, etc.)
+                        - Mention years of experience or relevant achievements
+                        - Explain salary range decision, based on {{locationFormatted}} and job category and skills and project 
+                        - Do **not return generic explanations**. Use info **from the CV**.
 
-                        Return **only** a valid JSON in this exact format:
+                        --- 
 
-                        ```json
-                        {
-                         "positionLevel": "...",
-                         "jobCategory": "...",
-                         "field": "...",
-                         "location": "...",
-                         "estimatedSalary": 00000000,
-                         "salaryReason": "..."
-                         }
+                        Return **only** valid JSON in this exact format:
 
-                        CV Text:
-                        {{textContent}}
+                    ```json
+                    {
+                    "positionLevel": "...",
+                    "jobCategory": "...",
+                    "field": "...",
+                    "location": "{{locationFormatted}}",
+                    "estimatedSalary": 00000000,
+                    "salaryReason": "..."
+                    }
+                    ```
 
-             """;
+                    CV Text:
+                    {{textContent}}
+                """;
 
             var body = new
             {

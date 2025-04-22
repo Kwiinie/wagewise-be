@@ -27,7 +27,7 @@ build/
 ## Environment-specific files
 appsettings.Development.json
 appsettings.Local.json
-
+google-service-account.json
 ## Logs
 *.log
 logs/
