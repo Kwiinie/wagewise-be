@@ -51,7 +51,7 @@ namespace WageWise.Infrastructure.Services
                         - Software Engineering, Frontend Development, Backend Development, Mobile App Development, DevOps, Data Analysis, Data Engineering, Machine Learning, Artificial Intelligence, Cybersecurity, Blockchain, Network Engineering, Business Analyst, Marketing, Content Creator, Copywriter, Product Design, UI/UX Design, Human Resources, Project Management, Game Development, QA/QC, Sales, E-commerce, SEO Specialist, Cloud Engineer, etc.
 
                         3. **field**: The CV's academic or industry field, such as:
-                        - Information Technology, Computer Science, Artificial Intelligence, Cybersecurity, Data Science, Multimedia, Graphic Design, Communication, Journalism, Business Administration, Marketing, Finance, Banking, Accounting, Human Resources, Education, Law, Construction, Architecture, Healthcare, Civil Engineering, Economics, etc.
+                        - Information Technology, Computer Science, Artificial Intelligence, Event, Cybersecurity, Data Science, Multimedia, Graphic Design, Communication, Journalism, Business Administration, Marketing, Finance, Banking, Accounting, Human Resources, Education, Law, Construction, Architecture, Healthcare, Civil Engineering, Economics, etc.
 
                         4. **location**: Return exactly as: "{{locationFormatted}}"
 
@@ -61,8 +61,6 @@ namespace WageWise.Infrastructure.Services
                         - Certifications or projects
                         - Job level and job category
                         - Market demand in {{locationFormatted}}
-
-                        **Increase the salary by 25–40% above the typical market range for this role**. Do not explain this increase in the salaryReason.
 
                         6. **salaryReason**: Write in **Vietnamese** as **one clear paragraph**, based on actual CV content.
                         - Explain why can have that estimated Salary. 
